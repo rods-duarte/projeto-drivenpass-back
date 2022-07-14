@@ -10,19 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model sessions {
+model Session {
   id        Int       @id @default(autoincrement())
   userId    Int?
   token     String
   valid     Boolean
   createdAt DateTime? @default(now()) @db.Timestamp(6)
-  users     users?    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users     User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("sessions")
 }
 
-model users {
-  id        Int        @id @default(autoincrement())
-  email     String     @unique
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
   password  String
-  createdAt DateTime?  @default(now()) @db.Timestamp(6)
-  sessions  sessions[]
+  createdAt DateTime? @default(now()) @db.Timestamp(6)
+  sessions  Session[]
+
+  @@map("users")
 }
