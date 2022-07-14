@@ -32,7 +32,7 @@ const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
   const { type, message }: { type: string; message: string } = error;
 
   if (type) {
-    res.status(serviceErrorToStatusCode[type]).send(message);
+    return res.status(serviceErrorToStatusCode[type]).send(message);
   }
 
   res.status(500).send('Internal server error !');
