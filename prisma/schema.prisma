@@ -13,7 +13,7 @@ datasource db {
 model Session {
   id        Int       @id @default(autoincrement())
   userId    Int?
-  token     String
+  token     String    @unique
   valid     Boolean
   createdAt DateTime? @default(now()) @db.Timestamp(6)
   users     User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -22,11 +22,78 @@ model Session {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  password  String
-  createdAt DateTime? @default(now()) @db.Timestamp(6)
-  sessions  Session[]
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  password    String
+  createdAt   DateTime?    @default(now()) @db.Timestamp(6)
+  sessions    Session[]
+  credentials Credential[]
+  notes       Note[]
+  cards       Card[]
+  network     Network[]
 
   @@map("users")
+}
+
+model Credential {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  title     String
+  url       String
+  username  String
+  password  String
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  users     User?    @relation(fields: [userId], references: [id])
+
+  @@unique([userId, title])
+  @@map("credentials")
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  title     String
+  content   String
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  users     User?    @relation(fields: [userId], references: [id])
+
+  @@unique([userId, title])
+  @@map("notes")
+}
+
+enum cardType {
+  Credit
+  Debit
+  All
+}
+
+model Card {
+  id             Int      @id @default(autoincrement())
+  userId         Int?
+  title          String
+  cardHolderName String
+  number         String
+  securityCode   Int
+  expirationDate String
+  password       String
+  virtual        Boolean
+  type           cardType
+  createdAt      DateTime @default(now()) @db.Timestamp(6)
+  users          User?    @relation(fields: [userId], references: [id])
+
+  @@unique([userId, title])
+  @@map("cards")
+}
+
+model Network {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  title     String
+  name      String
+  password  String
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  users     User?    @relation(fields: [userId], references: [id])
+
+  @@unique([userId, title])
+  @@map("networks")
 }
