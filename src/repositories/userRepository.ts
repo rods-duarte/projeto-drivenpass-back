@@ -1,7 +1,7 @@
 import client from '../config/database.js';
-import { CreateUserData } from '../services/authService.js';
+import { CreateUserData } from '../services/userService.js';
 
-async function create(data: CreateUserData) {
+async function insert(data: CreateUserData) {
   await client.user.create({
     data,
   });
@@ -14,7 +14,7 @@ async function findByEmail(email: string) {
 
 const userRepository = {
   findByEmail,
-  create,
+  insert,
 };
 
 export default userRepository;

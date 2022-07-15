@@ -1,9 +1,11 @@
 import { Router } from 'express';
 // controllers
-import { register } from '../controllers/authController.js';
+import { register, login } from '../controllers/authController.js';
 // middlewares
-import validateUniqueEmail from '../middlewares/authMiddleware.js';
+import validateUniqueEmail from '../middlewares/emailValidateMiddleware.js';
 import validateSchema from '../middlewares/schemaValidateMiddleware.js';
+import validateCredentials from '../middlewares/loginValidateMiddleware.js';
+import LoginDataSchema from '../models/LoginDataSchema.js';
 // schemas
 import RegisterDataSchema from '../models/RegisterDataSchema.js';
 
@@ -15,6 +17,11 @@ authRouter.post(
   validateUniqueEmail,
   register
 );
-authRouter.post('signin');
+authRouter.post(
+  '/signin',
+  validateSchema(LoginDataSchema),
+  validateCredentials,
+  login
+);
 
 export default authRouter;

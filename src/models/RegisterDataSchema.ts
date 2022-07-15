@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { CreateUserData } from '../services/authService.js';
+import { CreateUserData } from '../services/userService.js';
 
 const RegisterDataSchema = Joi.object<CreateUserData>({
   email: Joi.string().email().required(),
