@@ -61,7 +61,7 @@ model Card {
   title          String
   cardHolderName String
   number         String
-  securityCode   Int
+  securityCode   String
   expirationDate String
   password       String
   virtual        Boolean
