@@ -29,7 +29,10 @@ async function findByUserIdAndTitle(userId: number, title: string) {
   const credential = await client.credential.findFirst({
     where: {
       userId,
-      title,
+      title: {
+        mode: 'insensitive',
+        equals: title,
+      },
     },
   });
   return credential;

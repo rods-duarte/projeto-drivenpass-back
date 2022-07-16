@@ -48,7 +48,7 @@ async function getAll(userId: number) {
 async function validateTitle(newCredential: CreateCredentialData) {
   const titleExists = await credentialRepository.findByUserIdAndTitle(
     newCredential.userId,
-    newCredential.title
+    newCredential.title.toLowerCase()
   );
 
   if (titleExists) {

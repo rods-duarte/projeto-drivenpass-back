@@ -14,7 +14,7 @@ export async function newCredential(req: Request, res: Response) {
   await credentialService.validateTitle(credential);
 
   await credentialService.create(credential);
-  res.status(200).send({ token });
+  res.status(200).send('Success');
 }
 
 export async function returnCredential(req: Request, res: Response) {
@@ -37,5 +37,5 @@ export async function deleteCredential(req: Request, res: Response) {
   const userId = +res.locals.userId;
 
   await credentialService.remove(userId, id);
-  res.status(200).send('Sucess');
+  res.status(200).send('Success');
 }
