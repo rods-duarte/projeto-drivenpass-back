@@ -8,7 +8,6 @@ export async function newCredential(req: Request, res: Response) {
   const { body } = req;
   body.password = crypt(body.password);
   const userId: number = res.locals.userId;
-  const token: string = res.locals.token;
 
   const credential: CreateCredentialData = { ...body, userId };
   await credentialService.validateTitle(credential);
