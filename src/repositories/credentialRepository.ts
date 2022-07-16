@@ -35,11 +35,21 @@ async function findByUserIdAndTitle(userId: number, title: string) {
   return credential;
 }
 
+async function remove(userId: number, id: number) {
+  await client.credential.deleteMany({
+    where: {
+      id,
+      userId,
+    },
+  });
+}
+
 const credentialRepository = {
   insert,
   findAll,
   findByUserIdAndTitle,
   findById,
+  remove,
 };
 
 export default credentialRepository;

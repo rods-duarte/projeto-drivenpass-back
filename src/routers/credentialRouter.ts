@@ -3,6 +3,7 @@ import validateSchema from '../middlewares/schemaValidateMiddleware.js';
 import validateToken from '../middlewares/tokenValidateMiddleware.js';
 import createCredentialSchema from '../models/CreateCredentialSchema.js';
 import {
+  deleteCredential,
   newCredential,
   returnCredential,
   returnCredentials,
@@ -18,6 +19,6 @@ credentialRouter.post(
 );
 credentialRouter.get('/credentials/:id', validateToken, returnCredential);
 credentialRouter.get('/credentials', validateToken, returnCredentials);
-credentialRouter.delete('/credential/:id');
+credentialRouter.delete('/credentials/:id', validateToken, deleteCredential);
 
 export default credentialRouter;
