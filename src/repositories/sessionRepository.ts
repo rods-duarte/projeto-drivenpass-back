@@ -14,6 +14,15 @@ async function findByUserId(userId: number) {
   return session;
 }
 
+async function findByToken(token: string) {
+  const session = await client.session.findUnique({
+    where: {
+      token,
+    },
+  });
+  return session;
+}
+
 async function insert(data: CreateSessionData) {
   await client.session.create({
     data,
@@ -33,6 +42,7 @@ async function update(id: number, data: UpdateSessionData) {
 const sessionRepository = {
   insert,
   findByUserId,
+  findByToken,
   update,
 };
 

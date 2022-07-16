@@ -94,6 +94,5 @@ model Network {
   createdAt DateTime @default(now()) @db.Timestamp(6)
   users     User?    @relation(fields: [userId], references: [id])
 
-  @@unique([userId, title])
   @@map("networks")
 }

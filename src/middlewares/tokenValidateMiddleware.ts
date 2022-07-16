@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import sessionRepository from '../repositories/sessionRepository.js';
+import authService from '../services/authService.js';
+import sessionService from '../services/sessionService.js';
 import { unauthorizedError } from './errorHandlerMiddleware.js';
 
 interface JwtPayload {
@@ -17,21 +19,23 @@ export default async function validateToken(
   const token = req.headers?.authorization.replace('Bearer ', '').trim();
   const session = await sessionRepository.findByToken(token);
 
-  if (!session?.valid) {
-    const message = 'Session expired !';
+  if (!session) {
+    const message = 'Invalid token !';
     throw unauthorizedError(message);
   }
 
   try {
     const data = jwt.verify(token, process.env.SECRET_KEY) as JwtPayload;
 
-    const newToken = jwt.sign({ userId: data.userId }, process.env.SECRET_KEY);
+    const newToken = authService.createToken(data.userId);
     await sessionRepository.update(session.id, { token: newToken });
+    res.locals.userId = data.userId;
     res.locals.token = newToken;
 
     next();
   } catch (err) {
-    const message = 'Invalid token !';
+    await sessionService.close(session);
+    const message = 'Session expired !';
     throw unauthorizedError(message);
   }
 }
