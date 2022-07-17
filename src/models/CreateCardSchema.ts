@@ -6,7 +6,9 @@ const CreateCardSchema = Joi.object<CreateCardData>({
   number: Joi.string().length(19).required(),
   cardHolderName: Joi.string().required(),
   securityCode: Joi.string().length(3).required(),
-  expirationDate: Joi.string().regex(/^\d{2}\/\d{2}$/),
+  expirationDate: Joi.string()
+    .regex(/^\d{2}\/\d{2}$/)
+    .required(),
   password: Joi.string().required(),
   virtual: Joi.bool().required(),
   type: Joi.valid('Credit', 'Debit', 'Both').required(),

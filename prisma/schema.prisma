@@ -52,7 +52,7 @@ model Note {
 enum cardType {
   Credit
   Debit
-  All
+  Both
 }
 
 model Card {
