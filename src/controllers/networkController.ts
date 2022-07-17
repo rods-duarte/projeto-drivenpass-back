@@ -5,7 +5,6 @@ import networkService, {
 } from '../services/networkService.js';
 
 export async function newNetwork(req: Request, res: Response) {
-  console.log('CONTROLLER');
   const { body } = req;
   body.password = crypt(body.password);
   const userId: number = res.locals.userId;
