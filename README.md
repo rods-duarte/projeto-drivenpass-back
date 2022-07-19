@@ -6,7 +6,7 @@
 
 ##  :clipboard: Descrição
 
-This is an API for storing and managing passwords and confidential information. You can create an account and store your apps credentials, cards information, secret notes and wifi networks.
+This is an API for storing and managing passwords and confidential information. You can create an account and store your login credentials, cards information, secret notes and wifi networks.
 
 ## :computer:	 Technologies
 
