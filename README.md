@@ -4,7 +4,7 @@
    <img width="200px" src="https://user-images.githubusercontent.com/98065049/179421474-da914106-a11b-4d15-a427-ac0a69ae1567.png" />
 </p>
 
-##  :clipboard: Descrição
+##  :clipboard: Description
 
 This is an API for storing and managing passwords and confidential information. You can create an account and store your login credentials, cards information, secret notes and wifi networks.
 
