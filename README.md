@@ -38,9 +38,9 @@ POST /signup
     - Route to register a new user
     - headers: {}
     - body:{
-        "email": "lorem@gmail.com",
-        "senha": "loremipsum"
-}
+      "email": "lorem@gmail.com",
+      "password": "loremipsum"
+      }
 ```
 
 #### Sign-in
@@ -51,7 +51,7 @@ POST /signin
     - headers: {}
     - body: {
     "email": "lorem@gmail.com",
-    "senha": "loremipsum"
+    "password": "loremipsum"
     }
 ```
 
