@@ -74,14 +74,14 @@ POST /credentials
 #### Read (authenticated)
 
 ```yml
-GET /credentials/ (autenticada)
+GET /credentials/ (authenticated)
     - Route to list all user credentials
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ``` 
 
 ```yml
-GET /credentials/:id (autenticada)
+GET /credentials/:id (authenticated)
     - Route to list credential by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -90,7 +90,7 @@ GET /credentials/:id (autenticada)
 #### Delete (authenticated)
  
 ```yml
-DELETE /credentials/:id (autenticada)
+DELETE /credentials/:id (authenticated)
     - Route to delete credential by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -102,7 +102,7 @@ DELETE /credentials/:id (autenticada)
 #### Create (authenticated)
     
 ```yml 
-POST /cards
+POST /cards (authenticated)
     - Route to register a new card
     - headers: { "Authorization": "Bearer $token" }
     - body: {
@@ -120,14 +120,14 @@ POST /cards
 #### Read (authenticated)
 
 ```yml
-GET /cards/ (autenticada)
+GET /cards/ (authenticated)
     - Route to list all user cards
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ``` 
 
 ```yml
-GET /cards/:id (autenticada)
+GET /cards/:id (authenticated)
     - Route to list card by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -136,7 +136,7 @@ GET /cards/:id (autenticada)
 #### Delete (authenticated)
  
 ```yml
-DELETE /cards/:id (autenticada)
+DELETE /cards/:id (authenticated)
     - Route to delete card by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -148,7 +148,7 @@ DELETE /cards/:id (autenticada)
 #### Create (authenticated)
     
 ```yml 
-POST /notes
+POST /notes (authenticated)
     - Route to register a new note
     - headers: { "Authorization": "Bearer $token" }
     - body: {
@@ -160,14 +160,14 @@ POST /notes
 #### Read (authenticated)
 
 ```yml
-GET /notes/ (autenticada)
+GET /notes/ (authenticated)
     - Route to list all user notes
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ``` 
 
 ```yml
-GET /notes/:id (autenticada)
+GET /notes/:id (authenticated)
     - Route to list note by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -176,7 +176,7 @@ GET /notes/:id (autenticada)
 #### Delete (authenticated)
  
 ```yml
-DELETE /notes/:id (autenticada)
+DELETE /notes/:id (authenticated)
     - Route to delete note by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -188,7 +188,7 @@ DELETE /notes/:id (autenticada)
 #### Create (authenticated)
     
 ```yml 
-POST /networks
+POST /networks (authenticated)
     - Route to register a new WiFi network
     - headers: { "Authorization": "Bearer $token" }
     - body: {
@@ -201,14 +201,14 @@ POST /networks
 #### Read (authenticated)
 
 ```yml
-GET /networks/ (autenticada)
+GET /networks/ (authenticated)
     - Route to list all user netowrks
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ``` 
 
 ```yml
-GET /networks/:id (autenticada)
+GET /networks/:id (authenticated)
     - Route to list network by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
@@ -217,7 +217,7 @@ GET /networks/:id (autenticada)
 #### Delete (authenticated)
  
 ```yml
-DELETE /networks/:id (autenticada)
+DELETE /networks/:id (authenticated)
     - Route to delete network by id
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
